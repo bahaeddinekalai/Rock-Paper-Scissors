@@ -73,6 +73,35 @@ function playRound(playerChoice, computerSelection) {
     }
   }
 }
-const computerSelection = getComputerChoice();
-const playerSelection = getPlayerChoice();
-console.log(playRound(playerSelection, computerSelection));
+
+function game() {
+  let playerScore = 0;
+  let computerScore = 0;
+  for (let i = 1; i <= 5; i++) {
+    console.log(`Round Number ${i}`);
+    const computerSelection = getComputerChoice();
+    const playerSelection = getPlayerChoice();
+    result = playRound(playerSelection, computerSelection);
+    console.log(result);
+    if (result.toUpperCase().indexOf("WIN") >= 0) {
+      playerScore += 1;
+    } else if (result.toUpperCase().indexOf("LOSE") >= 0) {
+      computerScore += 1;
+    }
+  }
+  if (playerScore > computerScore) {
+    console.log(
+      `You Win, your score is ${playerScore} and computer score is ${computerScore}`
+    );
+  } else if (playerScore < computerScore) {
+    console.log(
+      `You Lose, your score is ${playerScore} and computer score is ${computerScore}`
+    );
+  } else {
+    console.log(
+      `Tie, your score is ${playerScore} and computer score is ${computerScore}`
+    );
+  }
+}
+
+game();
