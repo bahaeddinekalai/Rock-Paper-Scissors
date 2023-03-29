@@ -73,7 +73,21 @@ function playRound(playerChoice, computerSelection) {
     }
   }
 }
-
+function determineWinner(playerScore, computerScore) {
+  if (playerScore > computerScore) {
+    console.log(
+      `You Win, your score is ${playerScore} and computer score is ${computerScore}`
+    );
+  } else if (playerScore < computerScore) {
+    console.log(
+      `You Lose, your score is ${playerScore} and computer score is ${computerScore}`
+    );
+  } else {
+    console.log(
+      `Tie, your score is ${playerScore} and computer score is ${computerScore}`
+    );
+  }
+}
 function game() {
   let playerScore = 0;
   let computerScore = 0;
@@ -89,19 +103,7 @@ function game() {
       computerScore += 1;
     }
   }
-  if (playerScore > computerScore) {
-    console.log(
-      `You Win, your score is ${playerScore} and computer score is ${computerScore}`
-    );
-  } else if (playerScore < computerScore) {
-    console.log(
-      `You Lose, your score is ${playerScore} and computer score is ${computerScore}`
-    );
-  } else {
-    console.log(
-      `Tie, your score is ${playerScore} and computer score is ${computerScore}`
-    );
-  }
+  determineWinner(playerScore, computerScore);
 }
 
 game();
