@@ -88,20 +88,28 @@ function determineWinner(playerScore, computerScore) {
     );
   }
 }
+function calculateScore(resultRound, playerScore, computerScore) {
+  if (resultRound.toUpperCase().indexOf("WIN") >= 0) {
+    playerScore += 1;
+  } else if (resultRound.toUpperCase().indexOf("LOSE") >= 0) {
+    computerScore += 1;
+  }
+  return (result = [playerScore, computerScore]);
+}
+
 function game() {
-  let playerScore = 0;
-  let computerScore = 0;
+  let playerScore = 0,
+    computerScore = 0;
   for (let i = 1; i <= 5; i++) {
     console.log(`Round Number ${i}`);
     const computerSelection = getComputerChoice();
     const playerSelection = getPlayerChoice();
-    result = playRound(playerSelection, computerSelection);
-    console.log(result);
-    if (result.toUpperCase().indexOf("WIN") >= 0) {
-      playerScore += 1;
-    } else if (result.toUpperCase().indexOf("LOSE") >= 0) {
-      computerScore += 1;
-    }
+    console.log(playRound(playerSelection, computerSelection));
+    [playerScore, computerScore] = calculateScore(
+      playRound(playerSelection, computerSelection),
+      playerScore,
+      computerScore
+    );
   }
   determineWinner(playerScore, computerScore);
 }
