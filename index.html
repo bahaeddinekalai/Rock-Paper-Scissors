@@ -5,33 +5,37 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script src="index.js"></script>
+    <script src="index.js" defer></script>
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <h1>Rock Paper Scissors</h1>
+    <div id="header">
+        <h1>Rock Paper Scissors</h1>
+    </div>
+
     <div id="game">
         <div id="player">
             <h2>Player</h2>
-            <div id="player-score">0</div>
-            <div id="player-selection"></div>
+            <div class="txt" id="player-score">0</div>
+            <div class="txt" id="player-selection"></div>
         </div>
         <div id="computer">
             <h2>Computer</h2>
-            <div id="computer-score">0</div>
-            <div id="computer-selection"></div>
+            <div class="txt" id="computer-score">0</div>
+            <div class="txt" id="computer-selection"></div>
         </div>
     </div>
     <div id="buttons">
-        <button id="rock">Rock</button>
+        <button class="button txt" id="rock">Rock</button>
 
-        <button id="paper">Paper</button>
-        <button id="scissors">Scissors</button>
+        <button class="button txt" id="paper">Paper</button>
+        <button class="button txt" id="scissors">Scissors</button>
     </div>
-    <div>
+    <div id="result">
         <h2>Result</h2>
-        <div id="result"></div>
+        <div class="txt" id="result-text"></div>
     </div>
 
 </body>
