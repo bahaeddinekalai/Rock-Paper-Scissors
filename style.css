@@ -50,11 +50,10 @@ body {
   border: 2px solid black;
   box-shadow: 6px 8px 0px #dfa67b;
   cursor: pointer;
-
 }
-.txt{
-    font-weight: 500;
-    font-size: 20px;
+.txt {
+  font-weight: 500;
+  font-size: 20px;
 }
 .button:hover {
   background-color: #f8a36a;
@@ -73,9 +72,9 @@ h1 {
   padding: 0px;
   font-weight: bold;
 }
-h2{
-    font-size: 30px;
-    margin: 0px;
-    padding: 0px;
-    font-weight: bold;
+h2 {
+  font-size: 30px;
+  margin: 0px;
+  padding: 0px;
+  font-weight: bold;
 }

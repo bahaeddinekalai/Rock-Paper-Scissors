@@ -14,19 +14,6 @@ function getComputerChoice() {
       return computerChoice;
   }
 }
-function getPlayerChoice() {
-  let playerChoice = prompt("choose between Rock ,Paper and Scissors", "");
-  playerChoice = playerChoice.toUpperCase();
-  if (
-    playerChoice == "ROCK" ||
-    playerChoice == "SCISSORS" ||
-    playerChoice == "PAPER"
-  ) {
-    return playerChoice;
-  } else {
-    getPlayerChoice();
-  }
-}
 
 function playRound(playerChoice, computerSelection) {
   if (computerSelection == "SCISSORS") {
@@ -73,19 +60,14 @@ function playRound(playerChoice, computerSelection) {
     }
   }
 }
+
 function determineWinner(playerScore, computerScore) {
   if (playerScore > computerScore) {
-    console.log(
-      `You Win, your score is ${playerScore} and computer score is ${computerScore}`
-    );
+    return "You Win";
   } else if (playerScore < computerScore) {
-    console.log(
-      `You Lose, your score is ${playerScore} and computer score is ${computerScore}`
-    );
+    return "You Lose";
   } else {
-    console.log(
-      `Tie, your score is ${playerScore} and computer score is ${computerScore}`
-    );
+    return "Tie";
   }
 }
 function calculateScore(resultRound, playerScore, computerScore) {
@@ -96,22 +78,36 @@ function calculateScore(resultRound, playerScore, computerScore) {
   }
   return (result = [playerScore, computerScore]);
 }
-
 function game() {
   let playerScore = 0,
     computerScore = 0;
-  for (let i = 1; i <= 5; i++) {
-    console.log(`Round Number ${i}`);
-    const computerSelection = getComputerChoice();
-    const playerSelection = getPlayerChoice();
-    console.log(playRound(playerSelection, computerSelection));
-    [playerScore, computerScore] = calculateScore(
-      playRound(playerSelection, computerSelection),
-      playerScore,
-      computerScore
-    );
-  }
-  determineWinner(playerScore, computerScore);
+  let playerSelection_text = document.querySelector("#player-selection");
+  let computerSelection_text = document.querySelector("#computer-selection");
+  let playerScore_text = document.querySelector("#player-score");
+  let computerScore_text = document.querySelector("#computer-score");
+  let result_text = document.querySelector("#result-text");
+  let buttons = document.querySelectorAll(".button");
+
+  buttons.forEach((button) => {
+    button.addEventListener("click", () => {
+      let playerSelection = button.id;
+      let computerSelection = getComputerChoice();
+      playerSelection_text.textContent = playerSelection;
+      computerSelection_text.textContent = computerSelection;
+      [playerScore, computerScore] = calculateScore(
+        playRound(playerSelection, computerSelection),
+        playerScore,
+        computerScore
+      );
+      playerScore_text.textContent = playerScore;
+      computerScore_text.textContent = computerScore;
+      if (playerScore == 5 || computerScore == 5) {
+        result_text.textContent = determineWinner(playerScore, computerScore);
+        playerScore = 0;
+        computerScore = 0;
+      }
+    });
+  }); 
 }
 
 game();
